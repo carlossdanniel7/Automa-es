@@ -6,16 +6,16 @@ on:
 
 jobs:
   e2e-test:
-  runs-on: ["ubuntu-latest"]
+    runs-on: ["ubuntu-latest"]
 
-  steps: 
-    - uses: actions/checkout@v4
+    steps: 
+      - uses: actions/checkout@v4
 
-    - name: Instalando testes de acessibilidade
-      run: npm i cypress-axe cypress-axe-core
+      - name: Instalando testes de acessibilidade
+        run: npm i cypress-axe cypress-axe-core
 
-    - name: Istalando o relatório de testes
-      run: npm i mochawesome cypress-mochawesome-reporter --save-dev
+      - name: Istalando o relatório de testes
+        run: npm i mochawesome cypress-mochawesome-reporter --save-dev
  
-    - name: Testes e2e
-      run: npx cypress run
+      - name: Testes e2e
+        run: npx cypress run
