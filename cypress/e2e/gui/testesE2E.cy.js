@@ -53,7 +53,7 @@ describe('Lista de Produto', () => {
       cy.url().should('eq', 'http://165.227.93.41/lojinha-web/v2/produto')
       cy.screenshot()
    })
-   it.only('Editar Produto mencionando um nome com a quantidade de caracteres maior que 100')
+   it.only('Editar Produto mencionando um nome com a quantidade de caracteres maior que 100')  
    
    it.only('Adicionar Componente com Sucesso', () => {
       cy.adicionarComponente('Fone de Ouvido', '10')
