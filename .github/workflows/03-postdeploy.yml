@@ -1,0 +1,25 @@
+name: "Execução por deploy"
+
+#Gatilho de execução manual= workflow_dispatch
+on:
+  workflow_run:
+    workflows: ["Execução manual"] #Seria o nome do job do deploy
+    types:
+      - completed
+    
+
+jobs:
+  e2e-test:
+    runs-on: ["ubuntu-latest"]
+
+    steps: 
+      - uses: actions/checkout@v4
+
+      - name: Instalando testes de acessibilidade
+        run: npm i cypress-axe cypress-axe-core
+
+      - name: Istalando o relatório de testes
+        run: npm i mochawesome cypress-mochawesome-reporter --save-dev
+ 
+      - name: Testes e2e
+        run: npx cypress run
