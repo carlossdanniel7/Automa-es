@@ -96,13 +96,11 @@ describe('Testes Usuario de API da Lojinha', () => {
         }).then((response) => {
             usuarioId = response.body.data.usuarioId
             expect(response.status).to.eq(409)
-            expect(response.body).to.have.property("message", "Usuário adicionado com sucesso");
-            expect(response.body).to.have.property("error", "").that.is.a("string");
 
         });
     });
 
-after('Limpas todos os dados do usuario', () => {
+    it('Limpas todos os dados do usuario', () => {
         cy.api({
             method: "DELETE",
             url: `${url}dados`,

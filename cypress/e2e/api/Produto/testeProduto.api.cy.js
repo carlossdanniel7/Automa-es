@@ -323,6 +323,41 @@ describe('Testes E2E de API da Lojinha', () => {
             expect(response.status).to.eq(422)
         })
     });
-
-
+    it('Alterar as informações de um produto, colocando 100 caracteres no nome.', () => {
+        cy.api({
+            method: "PUT",
+            url: `${url}produtos/${produtoId}`,
+            headers: {
+                token: valorToken
+            },
+            body: {
+                produtoNome: "Bolinha de Golfe Bolinha de Golfe Bolinha de Golfe Bolinha de Golfe Bolinha de Golfe Bolinha de Golfe",
+                produtoValor: 15,
+                produtoCores: [
+                    "Laranja"
+                ],
+                produtoUrlMock: "",
+                componentes: [
+                    {
+                        componenteNome: "bolinha de golfe reserva",
+                        componenteQuantidade: 10
+                    }
+                ]
+            },
+            failOnStatusCode: false
+        }).then((response) => {
+            expect(response.status).to.eq(200)
+        })
+    });
+    it(`Remover o produto ${produtoId}`, () => {
+        cy.api({
+            method: "DELETE",
+            url: `${url}produtos/${produtoId}`,
+            headers: {
+                token: valorToken
+            },
+        }).then((response) => {
+            expect(response.status).to.eq(204)
+        })
+    });
 });
